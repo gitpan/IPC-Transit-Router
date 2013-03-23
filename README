@@ -1,0 +1,54 @@
+IPC::Transit::Router - Allows fast, simple routing of Transit messages
+
+SYNOPSIS
+
+    use IPC::Transit;
+    use IPC::Transit::Router qw(troute troute_config);
+    troute_config({
+        routes => [
+            {   match => {
+                    a => 'b',
+                },
+                forwards => [
+                    {   qname => 'some_q' }
+                ],
+                transform => {
+                    x => 'y',
+                },
+            }
+        ],
+    });
+    troute({a => 'b'});
+    my $ret = IPC::Transit::receive(qname => 'some_q');
+    #$ret contains { a => 'b', x => 'y' }
+
+DESCRIPTION
+
+This library allows fast, simple routing of Transit messages
+
+FUNCTION
+
+troute_config($config);
+
+The config used by all mroute calls
+
+troute($message);
+
+Pass $message through the config; this will emit zero or more IPC::Transit
+messages.
+
+TODO
+
+A config validator.
+
+BUGS
+
+None known.
+
+COPYRIGHT
+
+Copyright (c) 2012, 2013 Dana M. Diederich. All Rights Reserved.
+
+AUTHOR
+
+Dana M. Diederich <diederich@gmail.com>

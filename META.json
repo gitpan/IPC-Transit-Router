@@ -1,0 +1,60 @@
+{
+   "abstract" : "Allows fast, simple routing of Transit messages",
+   "author" : [
+      "Dana M. Diederich <diederich@gmail.com>"
+   ],
+   "dynamic_config" : 1,
+   "generated_by" : "Module::Build version 0.38, CPAN::Meta::Converter version 2.120630",
+   "license" : [
+      "perl"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "IPC-Transit-Router",
+   "prereqs" : {
+      "build" : {
+         "requires" : {
+            "Test::More" : 0,
+            "Message::Router" : 0,
+            "IPC::Transit" : 0
+         }
+      },
+      "configure" : {
+         "requires" : {
+            "Module::Build" : "0",
+            "Message::Router" : "0",
+            "IPC::Transit" : "0"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "Message::Router" : "0",
+            "IPC::Transit" : "0"
+         }
+      }
+   },
+   "provides" : {
+      "IPC::Transit::Router" : {
+         "file" : "lib/IPC/Transit/Router.pm",
+         "version" : "0.1"
+      }
+   },
+   "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/dana/perl-IPC-Transit-Router/issues"
+      },
+      "license" : [
+         "http://dev.perl.org/licenses/"
+      ],
+      "homepage" : "https://metacpan.org/module/IPC::Transit::Router",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/dana/perl-IPC-Transit-Router.git",
+         "web" : "https://github.com/dana/perl-IPC-Transit-Router.git"
+      }
+   },
+   "version" : "0.1"
+}
