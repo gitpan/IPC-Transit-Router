@@ -1,24 +1,40 @@
-use ExtUtils::MakeMaker;
+use 5.006;
+use strict;
+use warnings FATAL => 'all';
+use inc::Module::Install;
 
-#copied shamelessly from Pod-PseudoPod-0.18/Makefile.PL
-# The list of tests has to be explicitly generated on Win98.
-my @tests;
-for my $dir (qw(t)) {
-    opendir my $dh, $dir or die $!;
-    push @tests, map { "$dir/$_" } grep { /\.t$/ } readdir $dh;
-    closedir $dh;
-}
+name     'IPC-Transit-Router';
+all_from 'lib/IPC/Transit/Router.pm';
+author   q{Dana M. Diederich <diederich@gmail.com>};
+license  'artistic2';
 
-WriteMakefile(
-    NAME         => 'IPC::Transit::Router',
-    VERSION_FROM => 'lib/IPC/Transit/Router.pm', # finds $VERSION
-    PREREQ_PM    => {
-    },
-    test =>
-        {TESTS => "@tests"},
-    AUTHOR       => 'Dana M. Diederich <diederich@gmail.com>',
-    ABSTRACT     => 'Allows fast, simple routing of Transit messages', 
-    PL_FILES => {}, # ignore the Build.PL file
-    EXE_FILES => [],
-    LICENSE => 'perl',
+perl_version 5.006;
+
+tests_recursive('t');
+
+resources (
+   homepage   => 'https://metacpan.org/module/IPC::Transit::Router',
+   #IRC        => 'irc://irc.perl.org/#IPC-Transit-Router',
+   license    => 'http://www.perlfoundation.org/artistic_license_2_0',
+   repository => 'git://github.com/dana/perl-IPC-Transit-Router.git',
+   bugtracker => 'https://github.com/dana/perl-IPC-Transit-Router/issues',
 );
+
+configure_requires (
+   'Module::Install' => 0,
+);
+
+build_requires (
+   'Test::More' => 0,
+   'IPC::Transit' => 0,
+   'Message::Router' => 0,
+);
+
+requires (
+   'IPC::Transit' => 0,
+   'Message::Router' => 0,
+);
+
+install_as_cpan;
+auto_install;
+WriteAll;

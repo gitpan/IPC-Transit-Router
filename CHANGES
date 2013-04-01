@@ -1,2 +1,5 @@
+0.2 Sun Mar 31 20:24:07 PDT 2013
+    - Moved to Module::Starter
+    - Cleaned up broken dependency
 0.1 Fri Mar 22 20:21:59 PDT 2013
     - First Release
