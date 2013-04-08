@@ -1,7 +1,7 @@
 ---
-abstract: ~
+abstract: 'Allows fast, simple routing of Transit messages'
 author:
-  - ', 2013 Dana M. Diederich. All Rights Reserved.'
+  - 'Dana M. Diederich <diederich@gmail.com>'
   - 'Dana M. Diederich <diederich@gmail.com>'
 build_requires:
   ExtUtils::MakeMaker: 6.59
@@ -32,4 +32,4 @@ resources:
   homepage: https://metacpan.org/module/IPC::Transit::Router
   license: http://www.perlfoundation.org/artistic_license_2_0
   repository: git://github.com/dana/perl-IPC-Transit-Router.git
-version: 0.2
+version: 0.3

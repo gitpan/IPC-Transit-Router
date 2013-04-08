@@ -10,19 +10,11 @@ inc/Module/Install/Makefile.pm
 inc/Module/Install/Metadata.pm
 inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
-IPC-Transit-Router-0.2/CHANGES
-IPC-Transit-Router-0.2/lib/IPC/Transit/Router.pm
-IPC-Transit-Router-0.2/LICENSE
-IPC-Transit-Router-0.2/Makefile.PL
-IPC-Transit-Router-0.2/MANIFEST
-IPC-Transit-Router-0.2/META.yml
-IPC-Transit-Router-0.2/README
-IPC-Transit-Router-0.2/t/basic.t
-IPC-Transit-Router-0.2/TODO
+lib/IPC/Transit/.Router.pm.swp
 lib/IPC/Transit/Router.pm
 LICENSE
 Makefile.PL
-MANIFEST
+MANIFEST			This list of files
 META.yml
 README
 t/basic.t

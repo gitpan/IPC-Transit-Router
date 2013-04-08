@@ -1,6 +1,7 @@
 package IPC::Transit::Router;
 
 use strict;use warnings;
+use 5.006;
 use Message::Router qw(mroute mroute_config);
 use IPC::Transit;
 require Exporter;
@@ -8,7 +9,7 @@ use vars qw($VERSION @ISA @EXPORT_OK);
 @ISA = qw(Exporter);
 @EXPORT_OK = qw(troute troute_config);
 
-$VERSION = '0.2';
+$VERSION = '0.3';
 
 sub troute {
     my $message = shift;
@@ -39,6 +40,8 @@ sub handler {
 1;
 
 __END__
+=head1 NAME
+
 IPC::Transit::Router - Allows fast, simple routing of Transit messages
 
 =head1 SYNOPSIS
@@ -86,13 +89,19 @@ A config validator.
 
 None known.
 
-=head1 COPYRIGHT
-
-Copyright (c) 2012, 2013 Dana M. Diederich. All Rights Reserved.
-
 =head1 AUTHOR
 
 Dana M. Diederich <diederich@gmail.com>
+
+=head1 LICENSE AND COPYRIGHT
+
+Copyright 2012,2013 Dana M. Diederich.
+
+This program is free software; you can redistribute it and/or modify it
+under the terms of the the Artistic License (2.0). You may obtain a
+copy of the full license at:
+
+L<http://www.perlfoundation.org/artistic_license_2_0>
 
 =cut
 
