@@ -1,40 +1,63 @@
-use 5.006;
+
 use strict;
-use warnings FATAL => 'all';
-use inc::Module::Install;
+use warnings;
 
-name     'IPC-Transit-Router';
-all_from 'lib/IPC/Transit/Router.pm';
-author   q{Dana M. Diederich <diederich@gmail.com>};
-license  'artistic2';
 
-perl_version 5.006;
 
-tests_recursive('t');
+use ExtUtils::MakeMaker 6.30;
 
-resources (
-   homepage   => 'https://metacpan.org/module/IPC::Transit::Router',
-   #IRC        => 'irc://irc.perl.org/#IPC-Transit-Router',
-   license    => 'http://www.perlfoundation.org/artistic_license_2_0',
-   repository => 'git://github.com/dana/perl-IPC-Transit-Router.git',
-   bugtracker => 'https://github.com/dana/perl-IPC-Transit-Router/issues',
+
+
+my %WriteMakefileArgs = (
+  "ABSTRACT" => "Allows fast, simple routing of Transit messages",
+  "AUTHOR" => "Dana M. Diederich <dana\@realms.org>",
+  "BUILD_REQUIRES" => {},
+  "CONFIGURE_REQUIRES" => {
+    "ExtUtils::MakeMaker" => "6.30"
+  },
+  "DISTNAME" => "IPC-Transit-Router",
+  "EXE_FILES" => [],
+  "LICENSE" => "perl",
+  "NAME" => "IPC::Transit::Router",
+  "PREREQ_PM" => {},
+  "TEST_REQUIRES" => {},
+  "VERSION" => "0.4",
+  "test" => {
+    "TESTS" => "t/*.t"
+  }
 );
 
-configure_requires (
-   'Module::Install' => 0,
-);
 
-build_requires (
-   'Test::More' => 0,
-   'IPC::Transit' => 0,
-   'Message::Router' => 0,
-);
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.63_03) } ) {
+  my $tr = delete $WriteMakefileArgs{TEST_REQUIRES};
+  my $br = $WriteMakefileArgs{BUILD_REQUIRES};
+  for my $mod ( keys %$tr ) {
+    if ( exists $br->{$mod} ) {
+      $br->{$mod} = $tr->{$mod} if $tr->{$mod} > $br->{$mod};
+    }
+    else {
+      $br->{$mod} = $tr->{$mod};
+    }
+  }
+}
 
-requires (
-   'IPC::Transit' => 0,
-   'Message::Router' => 0,
-);
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
+  my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};
+  my $pp = $WriteMakefileArgs{PREREQ_PM};
+  for my $mod ( keys %$br ) {
+    if ( exists $pp->{$mod} ) {
+      $pp->{$mod} = $br->{$mod} if $br->{$mod} > $pp->{$mod};
+    }
+    else {
+      $pp->{$mod} = $br->{$mod};
+    }
+  }
+}
 
-install_as_cpan;
-auto_install;
-WriteAll;
+delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
+  unless eval { ExtUtils::MakeMaker->VERSION(6.52) };
+
+WriteMakefile(%WriteMakefileArgs);
+
+
+
