@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-
+use 5.006;
 
 use ExtUtils::MakeMaker 6.30;
 
@@ -19,9 +19,19 @@ my %WriteMakefileArgs = (
   "EXE_FILES" => [],
   "LICENSE" => "perl",
   "NAME" => "IPC::Transit::Router",
-  "PREREQ_PM" => {},
-  "TEST_REQUIRES" => {},
-  "VERSION" => "0.4",
+  "PREREQ_PM" => {
+    "Exporter" => 0,
+    "IPC::Transit" => 0,
+    "Message::Router" => 0,
+    "strict" => 0,
+    "vars" => 0,
+    "warnings" => 0
+  },
+  "TEST_REQUIRES" => {
+    "Test::More" => 0,
+    "lib" => 0
+  },
+  "VERSION" => "1.132260",
   "test" => {
     "TESTS" => "t/*.t"
   }
